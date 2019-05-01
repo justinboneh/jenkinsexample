@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        cmake(arguments: '-DCMAKE_TOOLCHAIN_FILE=~/Projects/vcpkg/scripts/buildsystems/vcpkg.cmake', installation: 'cmake-3.13.4-autoinstall')
-        cmakeBuild(buildType: 'Release', cleanBuild: true, installation: 'InSearchPath', steps: [[withCmake: true]])
+        cmake 'cmake-3.13.4-autoinstall'
+        cmakeBuild(buildType: 'Release', cleanBuild: true, installation: 'cmake-3.13.4-autoinstall', steps: [[withCmake: true]])
       }
     }
     stage('Test') {
