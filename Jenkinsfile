@@ -7,12 +7,6 @@ pipeline {
   }
   stages {
     stage('Build') {
-      agent {
-        dockerfile {
-          filename 'linux-x86.dockerfile'
-        }
-
-      }
       steps {
         cmake 'cmake-3.14.2-autoinstall'
         cmakeBuild(buildType: 'Release', cleanBuild: true, installation: 'cmake-3.14.2-autoinstall', steps: [[withCmake: true]])
@@ -23,7 +17,7 @@ pipeline {
         environment name: 'RUN_TESTS', value: 'true'
       }
       steps {
-        ctest 'InSearchPath'
+        ctest 'cmake-3.14.2-autoinstall'
       }
     }
     stage('Analyse') {
