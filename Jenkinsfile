@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        cmake 'cmake-3.13.4-autoinstall'
-        cmakeBuild(buildType: 'Release', cleanBuild: true, installation: 'cmake-3.13.4-autoinstall', steps: [[withCmake: true]])
+        cmake 'cmake-3.14.2-autoinstall'
+        cmakeBuild(buildType: 'Release', cleanBuild: true, installation: 'cmake-3.14.2-autoinstall', steps: [[withCmake: true]])
       }
     }
     stage('Test') {
