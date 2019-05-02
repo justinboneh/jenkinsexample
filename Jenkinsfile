@@ -8,8 +8,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        cmake(installation: '/usr/local/bin/cmake', workingDir: '_build', arguments: '.. -DCMAKE_MAKE_PROGRAM=make')
-        cmakeBuild(buildType: 'Release', cleanBuild: true, installation: '/usr/local/bin/cmake', steps: [[withCmake: true]], buildDir: '_build')
+        cmake(installation: 'cmake-3.14.2-autoinstall', workingDir: '_build', arguments: '.. -DCMAKE_MAKE_PROGRAM=make')
+        cmakeBuild(buildType: 'Release', cleanBuild: true, installation: 'cmake-3.14.2-autoinstall', steps: [[withCmake: true]], buildDir: '_build')
       }
     }
     stage('Test') {
@@ -17,7 +17,7 @@ pipeline {
         environment name: 'RUN_TESTS', value: 'true'
       }
       steps {
-        ctest '/usr/local/bin/cmake'
+        ctest 'cmake-3.14.2-autoinstall'
       }
     }
     stage('Analyse') {
