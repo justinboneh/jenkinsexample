@@ -17,7 +17,7 @@ pipeline {
         environment name: 'RUN_TESTS', value: 'true'
       }
       steps {
-        ctest 'cmake-3.14.2-autoinstall'
+        ctest(installation: 'cmake-3.14.2-autoinstall', workingDir: '_test', arguments: '..')
       }
     }
     stage('Analyse') {
