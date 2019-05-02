@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        cmake(installation: 'cmake-3.14.2-autoinstall', workingDir: '_build', arguments: '..')
+        cmake(installation: 'cmake-3.14.2-autoinstall', workingDir: '_build', arguments: '.. -DCMAKE_MAKE_PROGRAM=make')
         cmakeBuild(buildType: 'Release', cleanBuild: true, installation: 'cmake-3.14.2-autoinstall', steps: [[withCmake: true]], buildDir: '_build')
       }
     }
